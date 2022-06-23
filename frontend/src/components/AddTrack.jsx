@@ -5,7 +5,8 @@ function AddTrack() {
     const [input, setInput] = useState({
         artist_name:"",
         track_name:"",
-        genre_id:""
+        track_id:"",
+        track_genre:""
     })
 
     function handleChange(event) {
@@ -23,10 +24,12 @@ function AddTrack() {
         event.preventDefault();
         const newTrack = {
             artist_name: input.artist_name,
-            track_name: input.track_name
+            track_name: input.track_name,
+            track_id: input.track_id,
+            track_genre: input.track_genre
         }
 
-        axios.post("https://localhost:3001/create", newTrack)
+        axios.post("http://localhost:3001/create", newTrack)
     }
 
     return <div className="container">
@@ -39,8 +42,13 @@ function AddTrack() {
             <div className="form-group">
                 <input onChange={handleChange} name="track_name" defaultValue={input.track_name} autoComplete="off" className="form-control" placeholder="Enter track name"></input>
             </div>
+
+            <div className="form-group">
+                <input onChange={handleChange} name="track_id" defaultValue={input.track_id} autoComplete="off" className="form-control" placeholder="Enter track id"></input>
+            </div>
+
             <div className="form-inline">
-                <select class="custom-select my-1 mr-sm-2" onChange={handleChange} name="genre_id" defaultValue={input.genre_id} className="form-control">
+                <select onChange={handleChange} name="track_genre" defaultValue={input.track_genre} className="form-control">
                     <option selected>Select genre...</option>
                     <option value="AltBeats">AltBeats</option>
                     <option value="Black">Black Metal</option>
@@ -57,6 +65,7 @@ function AddTrack() {
                     <option value="Shoegaze">Shoegaze</option>
                 </select>
             </div>
+
             <button onClick={handleClick} className="btn btn-lg btn-info">Add Track</button>
         </form>
     </div>
