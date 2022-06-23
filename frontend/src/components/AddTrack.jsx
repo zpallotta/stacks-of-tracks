@@ -4,7 +4,9 @@ import axios from "axios";
 function AddTrack() {
     const [input, setInput] = useState({
         artist_name:"",
-        track_name:""
+        track_name:"",
+        track_id:"",
+        track_genre:""
     })
 
     function handleChange(event) {
@@ -22,7 +24,9 @@ function AddTrack() {
         event.preventDefault();
         const newTrack = {
             artist_name: input.artist_name,
-            track_name: input.track_name
+            track_name: input.track_name,
+            track_id: input.track_id,
+            track_genre: input.track_genre
         }
 
         axios.post("http://localhost:3001/create", newTrack)
@@ -38,6 +42,30 @@ function AddTrack() {
             <div className="form-group">
                 <input onChange={handleChange} name="track_name" defaultValue={input.track_name} autoComplete="off" className="form-control" placeholder="Enter track name"></input>
             </div>
+
+            <div className="form-group">
+                <input onChange={handleChange} name="track_id" defaultValue={input.track_id} autoComplete="off" className="form-control" placeholder="Enter track id"></input>
+            </div>
+
+            <div className="form-inline">
+                <select onChange={handleChange} name="track_genre" defaultValue={input.track_genre} className="form-control">
+                    <option selected>Select genre...</option>
+                    <option value="AltBeats">AltBeats</option>
+                    <option value="Black">Black Metal</option>
+                    <option value="Classical">Classical</option>
+                    <option value="Country">Country</option>
+                    <option value="Electronica">Electronica</option>
+                    <option value="Folk">Folk</option>
+                    <option value="HipHop">HipHop</option>
+                    <option value="Punk">Punk</option>
+                    <option value="R&B">R&B</option>
+                    <option value="Reggae">Reggae</option>
+                    <option value="Rock">Rock</option>
+                    <option value="SciFi">Sci-Fi</option>
+                    <option value="Shoegaze">Shoegaze</option>
+                </select>
+            </div>
+
             <button onClick={handleClick} className="btn btn-lg btn-info">Add Track</button>
         </form>
     </div>

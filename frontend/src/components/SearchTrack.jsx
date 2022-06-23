@@ -3,7 +3,9 @@ import React, {useEffect, useState} from "react";
 function SearchTrack() {
     const [tracks, setTracks] = useState([{
         artist_name: "",
-        track_name: ""        
+        track_name: "",
+        track_id: "",
+        track_genre: ""
     }])
 
     useEffect(() => {
@@ -19,7 +21,9 @@ function SearchTrack() {
         {tracks.map(track =>
         <div>
             <h1>{track.track_name}</h1>
-            <p>{track.artist_name}</p>
+            <p>Artist: {track.artist_name}</p>
+            <p>ID: {track.track_id}</p>
+            <p>Genre: {track.track_genre}</p>
         </div>
         )}
     </div>
