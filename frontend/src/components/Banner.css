@@ -1,0 +1,7 @@
+#bannerimage {
+    padding-top: 175px;
+    width: 100%;
+    background-image: url(../../public/banner.png);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
