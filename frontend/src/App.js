@@ -6,7 +6,6 @@ import Home from "./components/Home";
 import SearchTrack from "./components/SearchTrack";
 import AddTrack from "./components/AddTrack";
 import Banner from "./components/Banner";
-import Login from "./components/Login"
 
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
         <Route path="/" element={<Home />} exact/>
         <Route path="/search" element={<SearchTrack />}/>
         <Route path="/add" element={<AddTrack/>}/>
-        <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   );
