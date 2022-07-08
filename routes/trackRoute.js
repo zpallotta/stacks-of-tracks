@@ -16,9 +16,12 @@ router.route("/create").post((req, res) => {
 
 });
 
-router.route("/search").get((req, res) =>{
-    Track.find()
-        .then(foundTracks => res.json(foundTracks))
+router.route("/search").get((req, res) => {
+    const search = {};
+    if (req.query.artist_name) search.artist_name = req.query.artist_name;
+    if (req.query.track_genre) search.track_genre = req.query.track_genre;
+    Track.find(search)
+        .then(foundTracks => (console.log(foundTracks), res.json(foundTracks)))
 })
 
 module.exports = router;
